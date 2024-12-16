@@ -1,0 +1,32 @@
+{
+  "name": "@mohammedalfarra/nestjs-filter",
+  "version": "0.1.0",
+  "description": "A reusable filter package for NestJS applications.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohammed-alfarra/nestjs-filter"
+  },
+  "keywords": [
+    "nestjs",
+    "typeorm",
+    "filters",
+    "pagination",
+    "sorting"
+  ],
+  "author": "Mohammed Alfarra",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "class-validator": "^0.14.0",
+    "class-transformer": "^0.5.1",
+    "typeorm": "^0.3.0",
+    "typescript": "^4.5.5"
+  }
+}
