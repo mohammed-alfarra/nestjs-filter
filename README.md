@@ -110,7 +110,7 @@ export class ProductController {
 
 ---
 
-## Advanced Usage
+## Usage Examples
 
 ### Filtering
 
@@ -119,7 +119,7 @@ You can filter data using query parameters. For example:
 - `?name=water` filters products by the name "water".
 - `?name=water&price=120` filters products where the name is "water" and the price is 120.
 
-### Search
+### Searching
 
 Use the `search` parameter to perform a text-based search:
 
@@ -139,6 +139,8 @@ Pagination is enabled by default with the following parameters:
 - `?page=1&pageSize=10` (default values if not specified).
 
 You can customize the page and page size as needed.
+
+---
 
 ### Custom Filters
 
