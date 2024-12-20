@@ -9,7 +9,7 @@ import { PaginationService } from './domain/ports/pagination.service'
 import { GenericRepositoryFactory } from './providers/repository-factory.provider'
 
 @Module({
-    providers: [SearchService, FilterService, SortService, PaginationService, GenericRepositoryFactory],
+    providers: [SearchService, FilterService, SortService, PaginationService, GenericRepositoryFactory()],
     exports: [GenericRepositoryFactory],
 })
 export class FilterModule {

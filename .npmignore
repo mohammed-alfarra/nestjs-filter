@@ -1,0 +1,8 @@
+src/
+node_modules/
+*.log
+*.ts
+*.test.ts
+*.spec.ts
+index.ts
+package-lock.json
