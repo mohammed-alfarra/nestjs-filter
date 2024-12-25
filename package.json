@@ -1,6 +1,6 @@
 {
   "name": "nestjs-filter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A reusable filter package for NestJS applications.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

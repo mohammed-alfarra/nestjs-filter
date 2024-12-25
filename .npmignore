@@ -1,8 +1,11 @@
-src/
-node_modules/
-*.log
-*.ts
-*.test.ts
-*.spec.ts
+# source
+src
+tests
 index.ts
 package-lock.json
+tslint.json
+tsconfig.json
+.prettierrc
+
+# github
+.github
