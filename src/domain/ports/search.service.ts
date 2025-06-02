@@ -11,7 +11,7 @@ export class SearchService {
     ): void {
         searchableFields.forEach((field) => {
             if (search) {
-                query.orWhere(`entity.${field} LIKE :${field}`, {
+                query.orWhere(`LOWER(entity.${field}) LIKE LOWER(:${field})`, {
                     [field]: `%${search}%`,
                 })
             }

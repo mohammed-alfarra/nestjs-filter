@@ -12,13 +12,20 @@ export class FilterService {
         filterableFields.forEach((field) => {
             if (typeof field === 'string') {
                 if (filters[field]) {
-                    query.where(`entity.${field} = :${field}`, {
-                        [field]: filters[field],
-                    })
+                    const values = this.parseFilterValues(filters[field])
+                    if (values.length > 0) {
+                        query.andWhere(`LOWER(entity.${field}) IN (:...${field})`, {
+                            [field]: values.map(v => v.toLowerCase()),
+                        })
+                    }
                 }
             } else if (typeof field === 'object' && filters[field.key]) {
                 field.handler(query, filters[field.key])
             }
         })
+    }
+
+    private parseFilterValues(value: string): string[] {
+        return value.split(',').map(v => v.trim()).filter(v => v.length > 0)
     }
 }
