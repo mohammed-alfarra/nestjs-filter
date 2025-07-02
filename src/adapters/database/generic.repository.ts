@@ -33,11 +33,11 @@ export class GenericRepository<T extends ObjectLiteral> extends Repository<T> {
     }
 
     private applySearch(search: string, searchableFields: FilterableConfig['searchableFields']): void {
-        this.searchService.applySearch(this.queryBuilder, search, searchableFields)
+        this.searchService.applySearch(this.queryBuilder, search, searchableFields, this.target)
     }
 
     private applyFilters(filters: Record<string, any>, filterableFields: FilterableConfig['filterableFields']): void {
-        this.filterService.applyFilters(this.queryBuilder, filters, filterableFields)
+        this.filterService.applyFilters(this.queryBuilder, filters, filterableFields, this.target)
     }
 
     private applySort(
@@ -51,9 +51,15 @@ export class GenericRepository<T extends ObjectLiteral> extends Repository<T> {
     findWithFilters(queryParams: QueryParamsDto): this {
         const { search, sortBy, sortOrder = 'ASC', page, pageSize, ...filters } = queryParams
 
-        const { searchableFields, filterableFields, sortableFields } = this.getEntityFields()
+        const { searchableFields, filterableFields, sortableFields, relationshipFields } = this.getEntityFields()
 
         this.queryBuilder = this.createQueryBuilder('entity')
+
+        if (relationshipFields && Array.isArray(relationshipFields)) {
+            for (const relation of relationshipFields) {
+                this.queryBuilder = this.queryBuilder.leftJoinAndSelect(`entity.${relation}`, relation)
+            }
+        }
 
         if (search && searchableFields) {
             this.applySearch(search, searchableFields)
